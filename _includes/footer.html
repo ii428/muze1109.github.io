@@ -1,35 +1,14 @@
-<footer class='c-footer'>
-  <div class='o-grid'>
-    <div class='o-grid__col o-grid__col--full'>
-
-      <ul class='o-plain-list c-social-nav u-text-center'>
-        <li class='c-social-nav__item'>
-          <a href='{{ site.twitter }}' target='_blank'>
-            <span class='c-social-nav__icon' data-icon='ei-sc-twitter' data-size='s'></span>
-          </a>
-        </li>
-        <li class='c-social-nav__item'>
-          <a href='{{ site.facebook }}' target='_blank'>
-            <span class='c-social-nav__icon' data-icon='ei-sc-facebook' data-size='s'></span>
-          </a>
-        </li>
-        <li class='c-social-nav__item'>
-          <a href='{{ site.instagram }}' target='_blank'>
-            <span class='c-social-nav__icon' data-icon='ei-sc-instagram' data-size='s'></span>
-          </a>
-        </li>
-        <li class='c-social-nav__item'>
-          <a href='{{ site.github }}' target='_blank'>
-            <span class='c-social-nav__icon' data-icon='ei-sc-github' data-size='s'></span>
-          </a>
-        </li>
-        <li class='c-social-nav__item'>
-          <a href='mailto:{{ site.email }}' target='_blank'>
-            <span class='c-social-nav__icon' data-icon='ei-envelope' data-size='s'></span>
-          </a>
-        </li>
-      </ul>
-
-    </div>
-  </div>
+<footer class="c-page__footer">
+	</hr>
+	<p>
+	{% include fortune.html %}
+	</p>
+	{% if page.layout != 'amp' %}
+	</hr></br>
+	{% endif %}
+	<p>&copy; {{ site.author }} {{ 'now' | date: '%Y' }} | Powered by Jekyll | Using theme:Biu </p>
+	{% if page.layout != 'amp' %}
+	</br>
+	{% endif %}
+	<p>Follow me on: {% if site.twitter_username %}<a href="https://twitter.com/{{ site.twitter_username }}">Twitter</a>{% endif %}{% if site.twitter_username %}{% if site.github_username %} & {% endif %}{% endif %}{% if site.github_username %}<a href="https://github.com/{{ site.github_username }}">Github</a>{% endif %}<span class="u-separate"></span> Subscribe: <a href="{{ "/feed.xml" | prepend: site.baseurl }}">RSS</a></p>
 </footer>
