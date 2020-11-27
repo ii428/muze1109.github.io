@@ -1,12 +1,12 @@
 # Site settings
 title: Muze site
 description: >
-    木直
+    MUZE木直
 author: Muze
 email: 2296926656@qq.com
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://muze1109.github.io" # the base hostname & protocol for your site
-twitter_username: YourTwitter
+bili_username: "https://space.bilibili.com/71645548"
 github_username:  muze1109
 
 disqus_shortname: YourDisqusShortname
