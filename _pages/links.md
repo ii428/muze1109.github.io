@@ -7,7 +7,7 @@ permalink: /links/
 
 [思否](https://segmentfault.com/u/beizhongchaliang)
 
-[BiliBili](https://space.bilibili.com/71645548)
+[Bili](https://space.bilibili.com/71645548)
 
 [GitHub](https://github.com/muze1109)
 
