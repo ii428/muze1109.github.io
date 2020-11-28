@@ -11,5 +11,5 @@
 	{% if page.layout != 'amp' %}
 	</br>
 	{% endif %}
-	<p>Follow me: {% if site.bili_username %}<a href="{{ site.bili_username }}">Bili</a>{% endif %}{% if site.bili_username %}{% if site.github_username %} & {% endif %}{% endif %}{% if site.github_username %}<a href="https://github.com/{{ site.github_username }}">Github</a>{% endif %}<span class="u-separate"></span> Subscribe: <a href="{{ "/feed.xml" | prepend: site.baseurl }}">RSS</a></p>
+	<p>Follow: {% if site.bili_username %}<a href="{{ site.bili_username }}">Bili</a>{% endif %}{% if site.bili_username %}{% if site.github_username %} & {% endif %}{% endif %}{% if site.github_username %}<a href="https://github.com/{{ site.github_username }}">Github</a>{% endif %}<span class="u-separate"></span> Subscribe: <a href="{{ "/feed.xml" | prepend: site.baseurl }}">RSS</a></p>
 </footer>
