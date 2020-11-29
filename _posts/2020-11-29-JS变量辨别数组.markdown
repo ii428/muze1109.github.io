@@ -1,0 +1,91 @@
+---
+layout: post
+title:  "JS变量辨别数组"
+date:   2020-11-28 10:57:00
+---
+
+## Probelm
+
+1. 变量辨别数组有几种方式？
+2. 哪一种方式最好，有存在缺陷吗？
+
+## Answer
+
+### 判断变量是否为数组有几种方式？
+
+`以下的arr为一个数组变量`
+
+1. 原型
+   * arr instanceof Array
+   * arr.__ proto __ === Array.prototype
+   * arr.constructor === Array
+2. toString()
+   * Object.prototype.toString.call(arr) === '[object Array]'
+3. ES5方法`推荐`
+   * Array.isArray(arr)
+
+### 哪一种方式最好，有存在缺陷吗？
+
+我们先来看看MDN的一篇[《严格判定JavaScript对象是否为数组》](http://web.mit.edu/jwalden/www/isArray.html)
+
+1. instanceof、arr.__ proto __、arr.constructor
+
+   ```javascript
+   const arr = [1, 2, 3];
+   
+   arr instanceof Array;	// true
+   arr instanceof Object;	// true
+   arr.constructor === Array; // true
+   arr.__proto__ = Array.prototype;	// true
+   
+   
+   const obj = {name: 'Muze'};
+   obj.__proto__ = Array.prototype;
+   
+   obj instanceof Array;	// true
+   obj.constructor === Array;	// true
+   obj.__proto__ = Array.prototype;	// true
+   ```
+
+   HasProbelm: 
+
+   * Instanceof不能准确辨别是Array还是Object; 
+   * 由于是根据原型链上查找对应的Array的原型，当原型修改则判断有误。
+   * 存在多个全局环境的问题，验证结果可能不会符合预期
+
+2. toString()
+
+   ```javascript
+   const arr = [1, 2, 3];
+   const type = Object.prototype.toString.call(arr);
+   type === '[object Array]';	// true
+   ```
+
+   Object.prototype.toString.call可以获取对象的不同类型甚是强大；
+
+3. isArray()
+
+   ```javascript
+   const arr = [1, 2, 3];
+   Array.isArray(arr);	// true
+   ```
+
+   具体如何没有比MDN更好的了[走起](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/isArray)
+
+性能：
+
+isArray() > instanceof > toString()
+
+什么！你还不知道用哪一个？
+
+优先使用isArray()，假如不存在 Array.isArray()，则在其他代码之前运行下面的代码将创建该方法。
+
+```javascript
+if (!Array.isArray) {
+  Array.isArray = function(arg) {
+    return Object.prototype.toString.call(arg) === '[object Array]';
+  };
+}
+```
+
+该函数也是使用Object.prototype.toString.call()为何还要写个方法？多此一举？这当然是为了优雅。
